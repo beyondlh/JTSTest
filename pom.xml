@@ -1,0 +1,118 @@
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.hdsx</groupId>
+    <artifactId>JTSTest</artifactId>
+    <packaging>jar</packaging>
+    <version>0.0.1-SNAPSHOT</version>
+    <name>jtstest</name>
+    <description>
+        JTS测距
+    </description>
+
+    <!-- 集中定义公用的依赖版本号 -->
+    <!--版本变量设置 start-->
+    <properties>
+        <geotools.version>13.2</geotools.version>
+        <junit.version>4.11</junit.version>
+        <slf4j.version>1.7.7</slf4j.version>
+        <log4j.version>1.2.17</log4j.version>
+
+        <commons-io.version>2.4</commons-io.version>
+        <commons-lang3.version>3.3.2</commons-lang3.version>
+        <commons-beanutils.version>1.9.2</commons-beanutils.version>
+        <!--架包版本变量 end-->
+        <jdk.version>1.7</jdk.version>
+        <!--其他变量 end-->
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+        <!--指定Maven用什么编码来呈现站点的HTML文件-->
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+
+    </properties>
+    <dependencies>
+        <!-- ####### Spring 相关包 end ####### -->
+        <!--geotools start-->
+        <dependency>
+            <groupId>org.geotools</groupId>
+            <artifactId>gt-shapefile</artifactId>
+            <version>${geotools.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.geotools</groupId>
+            <artifactId>gt-cql</artifactId>
+            <version>${geotools.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.geotools</groupId>
+            <artifactId>gt-epsg-hsql</artifactId>
+            <version>${geotools.version}</version>
+        </dependency>
+
+
+        <!--单元测试-->
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>${junit.version}</version>
+            <scope>test</scope>
+        </dependency>
+
+        <!-- 日志文件管理包 start -->
+        <!--下面这三个是配套使用：http://blog.csdn.net/woshiwxw765/article/details/7624556-->
+        <dependency>
+            <groupId>log4j</groupId>
+            <artifactId>log4j</artifactId>
+            <version>${log4j.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>${slf4j.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-log4j12</artifactId>
+            <version>${slf4j.version}</version>
+        </dependency>
+        <!-- 日志文件管理包 end -->
+
+
+        <!--apache工具包-->
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>${commons-lang3.version}</version>
+        </dependency>
+
+    </dependencies>
+    <!--架包依赖 end-->
+
+    <!--设置项目编译级别等设置 start-->
+    <build>
+        <finalName>${project.artifactId}</finalName>
+        <resources>
+            <!--表示把java目录下的有关xml文件,properties文件编译/打包的时候放在resource目录下-->
+            <resource>
+                <directory>${basedir}/src/main/java</directory>
+                <includes>
+                    <include>**/*.properties</include>
+                    <include>**/*.xml</include>
+                </includes>
+            </resource>
+            <resource>
+                <directory>${basedir}/src/main/resources</directory>
+            </resource>
+        </resources>
+        <plugins>
+
+        </plugins>
+    </build>
+    <!--设置项目编译级别等设置 end-->
+
+</project>
