@@ -39,44 +39,12 @@ public class SetFieldValue {
             store.setTransaction(transaction);
             FeatureCollection<SimpleFeatureType, SimpleFeature> collection = source.getFeatures(filter);
             FeatureIterator<SimpleFeature> features = collection.features();
-            String newLMXL = "无路面";
+            String newLMXL = "测试";
             int i = 0;
             while (features.hasNext()) {
                 i = i + 1;
                 SimpleFeature feature = features.next();
                 String lmlx = feature.getAttribute("LMLX").toString();
-                switch (lmlx) {
-                    case "水泥混凝土":
-                        newLMXL = "水泥混凝土";
-                        break;
-                    case "沥青混凝土":
-                        newLMXL = "沥青混凝土";
-                        break;
-                    case "沥青贯入式":
-                        newLMXL = "简易铺装路面";
-                        break;
-                    case "沥青碎石":
-                        newLMXL = "简易铺装路面";
-                        break;
-                    case "沥青表面处治":
-                        newLMXL = "简易铺装路面";
-                        break;
-                    case "砖铺路面":
-                        newLMXL = "未铺装路面";
-                        break;
-                    case "砂石路面":
-                        newLMXL = "未铺装路面";
-                        break;
-                    case "石质路面":
-                        newLMXL = "未铺装路面";
-                        break;
-                    case "渣石路面":
-                        newLMXL = "未铺装路面";
-                        break;
-                    case "砼预制块":
-                        newLMXL = "未铺装路面";
-                        break;
-                }
                 feature.setAttribute("NewLMLX", newLMXL);
             }
             try {
@@ -105,7 +73,7 @@ public class SetFieldValue {
         FeatureSource<SimpleFeatureType, SimpleFeature> source = dataStore
                 .getFeatureSource(typeName);
         Filter filter = Filter.INCLUDE;
-        Filter filter1 = ff.equals(ff.property("LMLX"), ff.literal("沥青贯入式"));
+        Filter filter1 = ff.equals(ff.property("LMLX"), ff.literal("水泥混凝土"));
         if (source instanceof SimpleFeatureStore) {
             SimpleFeatureStore store = (SimpleFeatureStore) source;
             Transaction transaction = new DefaultTransaction("edit45");
@@ -133,7 +101,7 @@ public class SetFieldValue {
 
     public static void main(String[] args) {
         try {
-            String filePath = "D:/testData/LMLX/LMLX.shp";
+            String filePath = "D:/testData/Export_Output.shp";
 //            SetFieldValue getMValue = new SetFieldValue(filePath);
             SetFieldValue1(filePath);
         } catch (Exception e) {
