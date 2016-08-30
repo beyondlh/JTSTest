@@ -26,7 +26,7 @@
         <jdk.version>1.7</jdk.version>
         <!--其他变量 end-->
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-
+        <poi.version>3.13</poi.version>
         <!--指定Maven用什么编码来呈现站点的HTML文件-->
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
@@ -82,7 +82,20 @@
         </dependency>
         <!-- 日志文件管理包 end -->
 
+        <!--poi-->
+        <!--poi-->
+        <dependency>
+            <groupId>org.apache.poi</groupId>
+            <artifactId>poi</artifactId>
+            <version>${poi.version}</version>
+        </dependency>
 
+        <dependency>
+            <groupId>org.apache.poi</groupId>
+            <artifactId>poi-excelant</artifactId>
+            <version>${poi.version}</version>
+        </dependency>
+        <!--poiend-->
         <!--apache工具包-->
         <dependency>
             <groupId>org.apache.commons</groupId>
